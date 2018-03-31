@@ -1,16 +1,18 @@
 from setuptools import setup
 
+
 def readme():
     with open('README.md') as f:
         return f.read()
 
+
 setup(
-    name='{{ app_name }}',
+    name='{{ package_name }}',
     version='0.1',
     description='{{ description }}',
     long_description=readme(),
     url='{{ url }}',
     author='{{ author }}',
-    license='{{ licence }}',
-    packages=['{{ app_name }}'],
+    license='{{ license }}',
+    packages=['{{ package_name }}'],
     zip_safe=False)

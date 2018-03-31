@@ -1,10 +1,10 @@
 VARS = [
-    {'name': 'app_name',
+    {'name': 'package_name',
      'example': 'fancy_package'},
     {'name': 'description',
-     'example': 'This is a super fancy package!'},
+     'example': 'Super fancy package'},
     {'name': 'url',
-     'example': 'https://github.com/username/app_name'},
+     'example': 'https://github.com/username/package_name'},
     {'name': 'license',
      'default': 'MIT'},
     {'name': 'author',
