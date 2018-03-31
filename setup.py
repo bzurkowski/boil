@@ -13,6 +13,7 @@ setup(
     author='Bartosz Zurkowski',
     license='MIT',
     packages=['boil'],
+    scripts=['bin/boil'],
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Developers',
