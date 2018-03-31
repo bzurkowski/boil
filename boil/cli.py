@@ -15,16 +15,20 @@ from boil.renderer import Renderer
 
 
 def main():
-    print __name__
-
     args = docopt(__doc__)
     plate_name = args['<plate_name>']
 
     plate = plates.get_plate(plate_name)
 
+    vars = {}
+    for var in plate.VARS:
+        example = var.get('example', var.get('default'))
+        prompt_str = "%s [%s]:\n" % (var['name'], example)
+        value = raw_input(prompt_str)
+        vars[var['name']] = value
+
     env = get_environment(plate)
-    env.globals['app_name'] = ''.join(
-        [random.choice('abcde') for _ in range(10)])
+    env.globals.update(vars)
 
     renderer = Renderer(env, target_dir=os.getcwd())
     renderer.run()
