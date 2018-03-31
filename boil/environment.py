@@ -1,6 +1,10 @@
-from jinja2 import Environment, PackageLoader, select_autoescape
+from jinja2 import Environment, PackageLoader
+
+from boil import filters
 
 
 def get_environment(plate):
-    return Environment(
+    env = Environment(
         loader=PackageLoader(plate.__name__))
+    env.filters.update(filters.TEMPLATE_FILTERS)
+    return env

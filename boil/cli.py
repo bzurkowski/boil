@@ -10,6 +10,7 @@ import random
 from docopt import docopt
 
 from boil import plates
+from boil import filters
 from boil.environment import get_environment
 from boil.renderer import Renderer
 
@@ -22,8 +23,9 @@ def main():
 
     vars = {}
     for var in plate.VARS:
+        name = filters.humanize(var['name'])
         example = var.get('example', var.get('default'))
-        prompt_str = "%s [%s]:\n" % (var['name'], example)
+        prompt_str = "%s [%s]:\n" % (name, example)
         value = raw_input(prompt_str)
         vars[var['name']] = value
 
