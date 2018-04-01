@@ -16,6 +16,12 @@ $ pip install boil
 
 ## Usage
 
+List available plates:
+
+```bash
+$ boil list
+```
+
 Initialize new project:
 
 ```bash
