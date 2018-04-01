@@ -30,7 +30,6 @@ def main():
         vars[var['name']] = value
 
     env = get_environment(plate)
-    env.globals.update(vars)
 
-    renderer = Renderer(env, target_dir=os.getcwd())
+    renderer = Renderer(env, vars, target_dir=os.getcwd())
     renderer.run()

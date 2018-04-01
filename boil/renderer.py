@@ -1,10 +1,11 @@
 import os
 
 
-class Renderer(object):
+class Renderer:
 
-    def __init__(self, env, target_dir):
+    def __init__(self, env, vars, target_dir):
         self.env = env
+        self.vars = vars
         self.target_dir = target_dir
 
     def run(self):
@@ -20,7 +21,7 @@ class Renderer(object):
     def _get_target_path(self, template_path):
         target_path = os.path.join(self.target_dir, template_path)
         target_path_template = self.env.from_string(target_path)
-        target_path = target_path_template.render()
+        target_path = target_path_template.render(self.vars)
         if target_path.endswith('.j2'):
             target_path = os.path.splitext(target_path)[0]
         return target_path
@@ -32,4 +33,4 @@ class Renderer(object):
 
     def _render_target(self, template, target_path):
         with open(target_path, 'w') as target:
-            target.write(template.render())
+            target.write(template.render(self.vars))
