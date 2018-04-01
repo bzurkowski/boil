@@ -1,28 +1,23 @@
 import os
 
+from boil import environment
 from boil.filters import humanize
 from boil import plates
-from boil import filters
-from boil import environment
 from boil.renderer import Renderer
-from boil.utils.display import Display
-from boil.vars_loader import VarsLoader
+from boil.utils.display import display, prompt
+from boil import vars_loader
 
 
 def run_plate(plate_name):
-    display = Display()
+    plate_module = plates.get(plate_name)
 
-    plate = plates.get_plate(plate_name)
+    display("Initializing new %s. Please provide the following variables:"
+            % humanize(plate_name))
 
-    display.display("Initializing new %s. Please provide the following " \
-                    "variables:" % filters.humanize(plate_name))
-
-    env = environment.get_environment(plate)
-
-    vars_loader = VarsLoader()
-    vars = vars_loader.get_vars(plate.VARS)
+    env = environment.get(plate_module)
+    vars = vars_loader.get_vars(plate_module.VARS)
 
     renderer = Renderer(env, vars, target_dir=os.getcwd())
     renderer.run()
 
-    display.display("Done!", color='green')
+    display("Done!", color='green')
