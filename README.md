@@ -1,6 +1,10 @@
+[travis]: https://travis-ci.org/bzurkowski/boil
+[codeclimate]: https://codeclimate.com/github/bzurkowski/boil/maintainability
+
 # Boil
 
-[![Build Status](https://travis-ci.org/bzurkowski/boil.svg?branch=master)](https://travis-ci.org/bzurkowski/boil)
+[![Build Status](https://travis-ci.org/bzurkowski/boil.svg?branch=master)][travis]
+[![Code Climate](https://api.codeclimate.com/v1/badges/b56e0c5a0856da0c35ba/maintainability)][codeclimate]
 
 ## Installation
 
