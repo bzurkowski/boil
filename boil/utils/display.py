@@ -16,6 +16,7 @@ class Display:
         file_obj.write(msg)
         file_obj.flush()
 
-    def prompt(self, msg):
-        msg = ansi.format(msg, bold=True)
+    def prompt(self, msg=None):
+        if msg:
+            msg = ansi.format(msg, bold=True)
         return raw_input(msg)

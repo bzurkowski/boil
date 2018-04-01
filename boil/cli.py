@@ -14,6 +14,7 @@ from boil import filters
 from boil.environment import get_environment
 from boil.renderer import Renderer
 from boil.utils.display import Display
+from boil.vars_loader import VarsLoader
 
 
 def main():
@@ -26,13 +27,8 @@ def main():
 
     display.display("Initializing new %s. Please provide the following variables:" % filters.humanize(plate_name))
 
-    vars = {}
-    for var in plate.VARS:
-        name = filters.humanize(var['name'])
-        example = var.get('example', var.get('default'))
-        prompt_str = "%s [%s]:\n" % (name, example)
-        value = display.prompt(prompt_str)
-        vars[var['name']] = value
+    vars_loader = VarsLoader()
+    vars = vars_loader.get_vars(plate.VARS)
 
     env = get_environment(plate)
 
