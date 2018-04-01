@@ -13,6 +13,7 @@ from boil import plates
 from boil import filters
 from boil.environment import get_environment
 from boil.renderer import Renderer
+from boil.utils.display import Display
 
 
 def main():
@@ -21,12 +22,14 @@ def main():
 
     plate = plates.get_plate(plate_name)
 
+    display = Display()
+
     vars = {}
     for var in plate.VARS:
         name = filters.humanize(var['name'])
         example = var.get('example', var.get('default'))
         prompt_str = "%s [%s]:\n" % (name, example)
-        value = raw_input(prompt_str)
+        value = display.prompt(prompt_str)
         vars[var['name']] = value
 
     env = get_environment(plate)
