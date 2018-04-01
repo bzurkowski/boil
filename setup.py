@@ -16,6 +16,12 @@ setup(
     license='MIT',
     packages=['boil'],
     scripts=['bin/boil'],
+    entry_points={
+        'boil.plates': [
+            'python_package = boil.plates.python_package',
+            'python_script = boil.plates.python_script'
+        ]
+    },
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Developers',

@@ -1,15 +1,16 @@
 import os
 
+from boil import discovery
 from boil import environment
 from boil.filters import humanize
-from boil import plates
 from boil.renderer import Renderer
 from boil.utils.display import display
 from boil import vars_loader
 
 
 def run_plate(plate_name):
-    plate_module = plates.get(plate_name)
+    plates = discovery.load_plates()
+    plate_module = plates[plate_name]
 
     display("Initializing new %s. Please provide the following variables:"
             % humanize(plate_name))
