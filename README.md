@@ -6,6 +6,26 @@
 [![Build Status](https://travis-ci.org/bzurkowski/boil.svg?branch=master)][travis]
 [![Code Climate](https://api.codeclimate.com/v1/badges/b56e0c5a0856da0c35ba/maintainability)][codeclimate]
 
+**Initialization of new software projects should be quick and easy.**
+
+Boil tries to solve the following problems:
+
+* Wasting time on the initialisation of new software projects from scratch: creating a file structure, thinking about naming conventions, researching best practices - almost always requires documentation lookup.
+
+* No consistency between projects. Everyone initiates projects in their own way, often in an incorrect way.
+
+* Burden of bootstrapping tools for different technologies (separate app generator for Ansible, Django, Flask, etc.).
+
+* Lack of boilerplates for many software categories. If they already exist, they require reading through the documentation to find out how to use them.
+
+Here is how:
+
+* Use the [Jinja](http://jinja.pocoo.org/) templating engine to dynamically generate project files. Ask the user for a minimal set of variables (such as project name, author, license etc.) and inject them into the right place.
+
+* Organize a centralized, plugable repository for project templates. Let the community decide on their final form.
+
+* Provide a single API for initializing projects in any technology.
+
 ## Installation
 
 Use pip or easy_install:
@@ -17,6 +37,7 @@ $ pip install boil
 ## Usage
 
 ```
+$ boil
 Usage:
   boil new <plate_name>
   boil list
@@ -35,7 +56,7 @@ Search for plates:
 $ boil search <phrase>
 ```
 
-Initialize new project:
+Initialize new project from plate:
 
 ```
 $ boil new <plate_name>
