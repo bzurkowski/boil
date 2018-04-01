@@ -16,36 +16,63 @@ $ pip install boil
 
 ## Usage
 
+```
+Usage:
+  boil new <plate_name>
+  boil list
+  boil search <phrase>
+```
+
 List available plates:
 
-```bash
+```
 $ boil list
+```
+
+Search for plates:
+
+```
+$ boil search <phrase>
 ```
 
 Initialize new project:
 
-```bash
-$ boil new [PLATE]
+```
+$ boil new <plate_name>
 ```
 
-Examples:
+#### Examples
 
 ```bash
-# New Python package
+# List available plates
+$ boil list
+Available plates:
+python_package
+python_script
+...
+
+# Search for Python-related plates:
+$ boil search python
+Found plates:
+python_package
+python_script
+...
+
+# Initialize new Python package
 $ boil new python-package
 
-# New Django app
+# Initialize new Django app
 $ boil new django-app
 
-# New Rails 5 app
+# Initialize new Rails 5 app
 $ boil new rails-app
 
-# New Ruby gem
+# Initialize new Ruby gem
 $ boil new gem
 
-# New Ansible role
+# Initialize new Ansible role
 $ boil new ansible-role
 
-# New plate
+# Initialize new plate
 $ boil new plate
 ```
