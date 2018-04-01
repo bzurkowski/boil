@@ -4,7 +4,7 @@ from boil import environment
 from boil.filters import humanize
 from boil import plates
 from boil.renderer import Renderer
-from boil.utils.display import display, prompt
+from boil.utils.display import display
 from boil import vars_loader
 
 
