@@ -16,24 +16,10 @@ $ pip install boil
 
 ## Usage
 
-Search for available application boilerplates:
+Initialize new project:
 
 ```bash
-$ boil search [APP_NAME]
-```
-
-Examples:
-
-```bash
-# Search for available Python-related boilerplates
-$ boil search python
-python-package python-script django-app flask-app flask-api
-```
-
-Initialize new application:
-
-```bash
-$ boil new [APP_NAME]
+$ boil new [PLATE]
 ```
 
 Examples:
@@ -46,7 +32,7 @@ $ boil new python-package
 $ boil new django-app
 
 # New Rails 5 app
-$ boil new rails-app --version 5.1
+$ boil new rails-app
 
 # New Ruby gem
 $ boil new gem
@@ -54,6 +40,6 @@ $ boil new gem
 # New Ansible role
 $ boil new ansible-role
 
-# New boilerplate
-$ boil new boilerplate
+# New plate
+$ boil new plate
 ```
