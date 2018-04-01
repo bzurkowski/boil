@@ -1,5 +1,7 @@
 # Boil
 
+[![Build Status](https://travis-ci.org/bzurkowski/boil.svg?branch=master)](https://travis-ci.org/bzurkowski/boil)
+
 ## Installation
 
 Use pip or easy_install:
