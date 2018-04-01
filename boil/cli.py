@@ -24,6 +24,8 @@ def main():
 
     display = Display()
 
+    display.display("Initializing new %s. Please provide the following variables:" % filters.humanize(plate_name))
+
     vars = {}
     for var in plate.VARS:
         name = filters.humanize(var['name'])
@@ -36,3 +38,5 @@ def main():
 
     renderer = Renderer(env, vars, target_dir=os.getcwd())
     renderer.run()
+
+    display.display("Done!", color='green')
