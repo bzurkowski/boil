@@ -4,6 +4,8 @@ from boil import filters
 
 
 def get(plate_module):
-    env = Environment(loader=PackageLoader(plate_module.__name__))
+    env = Environment(
+        loader=PackageLoader(plate_module.__name__),
+        keep_trailing_newline=True)
     env.filters.update(filters.TEMPLATE_FILTERS)
     return env
