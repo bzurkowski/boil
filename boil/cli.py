@@ -4,9 +4,7 @@ Usage:
   boil new <plate_name>
   boil list
   boil search <phrase>
-
-Options:
-  -h --help     Display help.
+  boil -h | --help
 """
 
 from docopt import docopt
