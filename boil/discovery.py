@@ -1,5 +1,7 @@
 import pkg_resources
 
+from boil.exceptions import PlateNotFound
+
 
 def load_plates():
     plates = {}
@@ -12,6 +14,8 @@ plates = load_plates()
 
 
 def get_plate(plate_name):
+    if plate_name not in plates:
+        raise PlateNotFound(plate_name=plate_name)
     return plates[plate_name]
 
 

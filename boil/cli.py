@@ -10,6 +10,7 @@ Usage:
 from docopt import docopt
 
 from boil import discovery
+from boil.exceptions import PlateNotFound
 from boil import runner
 from boil.utils.display import display
 
@@ -44,4 +45,7 @@ def search_plates(phrase):
 
 
 def run_plate(plate_name):
-    runner.run_plate(plate_name)
+    try:
+        runner.run_plate(plate_name)
+    except PlateNotFound:
+        display.display("Plate not found.", color='red')
