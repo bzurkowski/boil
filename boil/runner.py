@@ -9,8 +9,7 @@ from boil import vars_loader
 
 
 def run_plate(plate_name):
-    plates = discovery.load_plates()
-    plate_module = plates[plate_name]
+    plate_module = discovery.get_plate(plate_name)
 
     display("Initializing new %s. Please provide the following variables:"
             % humanize(plate_name))
