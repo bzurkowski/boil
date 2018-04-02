@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -9,12 +9,12 @@ def readme():
 setup(
     name='boil',
     version='0.1',
-    description='Radically simple and versatile app initialization',
+    description='Radically simple app initialization',
     long_description=readme(),
     url='https://github.com/bzurkowski/boil',
     author='Bartosz Zurkowski',
     license='MIT',
-    packages=['boil'],
+    packages=find_packages(),
     scripts=['bin/boil'],
     entry_points={
         'boil.plates': [

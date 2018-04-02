@@ -1,17 +1,17 @@
 """Boil
 
 Usage:
-  boil new <plate_name>
-  boil list
-  boil search <phrase>
-  boil -h | --help
+    boil list
+    boil search <phrase>
+    boil new <plate_name>
+    boil -h | --help
 """
 
 from docopt import docopt
 
 from boil import discovery
 from boil import runner
-from boil.utils import display
+from boil.utils.display import display
 
 
 def main():
@@ -29,18 +29,18 @@ def main():
 
 def list_plates():
     plates = discovery.list_plates()
-    display.display("Available plates:")
-    display.display('\n'.join(plates))
+    display("Available plates:")
+    display('\n'.join(plates))
 
 
 def search_plates(phrase):
     plates = discovery.search_plates(phrase)
     num_found = len(plates)
     if num_found > 0:
-        display.display("Found plates (%s):" % num_found)
-        display.display('\n'.join(plates))
+        display("Found plates (%s):" % num_found)
+        display('\n'.join(plates))
     else:
-        display.display("No plates found.")
+        display("No plates found.")
 
 
 def run_plate(plate_name):
