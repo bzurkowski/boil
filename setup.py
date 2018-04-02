@@ -19,7 +19,8 @@ setup(
     entry_points={
         'boil.plates': [
             'python_package = boil.plates.python_package',
-            'python_script = boil.plates.python_script'
+            'python_script = boil.plates.python_script',
+            'ansible_role = boil.plates.ansible_role'
         ]
     },
     classifiers=[
