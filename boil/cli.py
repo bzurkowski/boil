@@ -9,43 +9,20 @@ Usage:
 
 from docopt import docopt
 
-from boil import discovery
-from boil.exceptions import PlateNotFound
-from boil import runner
-from boil.utils.display import display
+from boil import commands as cmd
 
 
 def main():
     args = docopt(__doc__)
 
+    command = get_command(args)
+    command().execute(args)
+
+
+def get_command(args):
     if args['list']:
-        list_plates()
+        return cmd.ListPlates
     elif args['search']:
-        phrase = args['<phrase>']
-        search_plates(phrase)
+        return cmd.SearchPlates
     elif args['new']:
-        plate_name = args['<plate_name>']
-        run_plate(plate_name)
-
-
-def list_plates():
-    plates = discovery.list_plates()
-    display("Available plates:")
-    display('\n'.join(plates))
-
-
-def search_plates(phrase):
-    plates = discovery.search_plates(phrase)
-    num_found = len(plates)
-    if num_found > 0:
-        display("Found plates (%s):" % num_found)
-        display('\n'.join(plates))
-    else:
-        display("No plates found.")
-
-
-def run_plate(plate_name):
-    try:
-        runner.run_plate(plate_name)
-    except PlateNotFound:
-        display.display("Plate not found.", color='red')
+        return cmd.RunPlate
