@@ -14,6 +14,8 @@ class PlateEnvironment(jinja2.Environment):
 
     def _setup_filters(self):
         self.filters.update(filters.TEMPLATE_FILTERS)
+        if hasattr(self.plate, 'FILTERS'):
+            self.filters.update(self.plate.FILTERS)
 
 
 def get(plate, **kwargs):
