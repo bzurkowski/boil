@@ -1,4 +1,4 @@
 jinja2
-docopt
+docopt==0.6.2
 inflection
 tox
