@@ -1,5 +1,5 @@
 from boil.utils.display import prompt
-from boil.filters import humanize
+from boil.common.filters import humanize
 
 
 def get_vars(var_defs):

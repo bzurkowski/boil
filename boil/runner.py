@@ -2,7 +2,7 @@ import os
 
 from boil import discovery
 from boil import environment
-from boil.filters import humanize
+from boil.common.filters import humanize
 from boil.renderer import Renderer
 from boil.utils.display import display
 from boil import vars_loader

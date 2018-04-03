@@ -1,6 +1,6 @@
 import jinja2
 
-from boil import filters
+from boil.common import filters
 
 
 class PlateEnvironment(jinja2.Environment):
@@ -13,7 +13,7 @@ class PlateEnvironment(jinja2.Environment):
         self._setup_filters()
 
     def _setup_filters(self):
-        self.filters.update(filters.TEMPLATE_FILTERS)
+        self.filters.update(filters.PLATE_COMMON_FILTERS)
         if hasattr(self.plate, 'FILTERS'):
             self.filters.update(self.plate.FILTERS)
 
