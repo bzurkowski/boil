@@ -1,11 +1,20 @@
 Boil
 ==============================================
 
-.. image:: https://travis-ci.org/bzurkowski/boil.svg?branch=master
+.. image:: https://img.shields.io/travis/bzurkowski/boil.svg
     :target: https://travis-ci.org/bzurkowski/boil
 
 .. image:: https://api.codeclimate.com/v1/badges/b56e0c5a0856da0c35ba/maintainability
     :target: https://codeclimate.com/github/bzurkowski/boil/maintainability
+
+.. image:: https://img.shields.io/pypi/v/boil.svg
+    :target: https://pypi.python.org/pypi/boil
+
+.. image:: https://img.shields.io/pypi/l/boil.svg
+    :target: https://pypi.python.org/pypi/boil
+
+.. image:: https://img.shields.io/pypi/pyversions/boil.svg
+    :target: https://pypi.python.org/pypi/boil
 
 ---------------
 
