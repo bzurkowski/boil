@@ -6,6 +6,11 @@ def readme():
         return f.read()
 
 
+def load_requirements():
+    with open('requirements.txt') as requirements:
+        return requirements.read().splitlines()
+
+
 setup(
     name='boil',
     version='0.1.1',
@@ -14,6 +19,7 @@ setup(
     url='https://github.com/bzurkowski/boil',
     author='Bartosz Zurkowski',
     license='MIT',
+    install_requires=load_requirements(),
     packages=find_packages(),
     scripts=['bin/boil'],
     entry_points={
