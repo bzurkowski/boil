@@ -43,4 +43,5 @@ setup(
         'Topic :: System :: Systems Administration',
         'Topic :: Utilities',
     ],
+    include_package_data=True,
     zip_safe=False)
