@@ -15,7 +15,7 @@ def run_plate(plate_name):
             % humanize(plate_name))
 
     env = environment.get(plate)
-    vars = vars_loader.get_vars(plate.VARS)
+    vars = vars_loader.get_vars(plate.vars)
 
     renderer = Renderer(env, vars, target_dir=os.getcwd())
     renderer.run()

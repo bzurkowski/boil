@@ -4,6 +4,20 @@ from boil.exceptions import PlateNotFound
 from boil.utils import misc
 
 
+class Plate:
+
+    def __init__(self, module):
+        self.module = module
+        self._load_module_data()
+
+    def _load_module_data(self):
+        self.name = self.module.__name__
+        self.vars = self.module.VARS if hasattr(self.module, 'VARS') else []
+        self.filters = {}
+        if hasattr(self.module, 'FILTERS'):
+            self.filters = self.module.FILTERS
+
+
 @misc.singleton
 class PlateManager:
 
@@ -25,5 +39,5 @@ class PlateManager:
     def _load_plates(self):
         plates = {}
         for entry_point in pkg_resources.iter_entry_points('boil.plates'):
-            plates[entry_point.name] = entry_point.load()
+            plates[entry_point.name] = Plate(entry_point.load())
         return plates
