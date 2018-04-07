@@ -9,7 +9,7 @@ Usage:
 
 from docopt import docopt
 
-from boil import commands as cmd
+from boil.cli import commands as cmd
 
 
 def main():
