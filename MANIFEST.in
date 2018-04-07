@@ -1,2 +1,3 @@
 include README.rst LICENSE.txt
 recursive-include boil/plates *
+include requirements.txt
