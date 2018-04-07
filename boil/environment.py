@@ -15,7 +15,3 @@ class PlateEnvironment(jinja2.Environment):
     def _setup_filters(self):
         self.filters.update(filters.PLATE_COMMON_FILTERS)
         self.filters.update(self.plate.filters)
-
-
-def get(plate, **kwargs):
-    return PlateEnvironment(plate, **kwargs)
