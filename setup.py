@@ -21,8 +21,10 @@ setup(
     license='MIT',
     install_requires=load_requirements(),
     packages=find_packages(),
-    scripts=['bin/boil'],
     entry_points={
+        'console_scripts': [
+            'boil = boil.cli:main',
+        ],
         'boil.plates': [
             'python_package = boil.plates.python_package',
             'python_script = boil.plates.python_script',
