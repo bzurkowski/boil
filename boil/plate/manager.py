@@ -1,25 +1,12 @@
 import pkg_resources
 
 from boil.exceptions import PlateNotFound
+from boil.plate import Plate
 from boil.utils import misc
 
 
-class Plate:
-
-    def __init__(self, module):
-        self.module = module
-        self._load_module_data()
-
-    def _load_module_data(self):
-        self.name = self.module.__name__
-        self.vars = self.module.VARS if hasattr(self.module, 'VARS') else []
-        self.filters = {}
-        if hasattr(self.module, 'FILTERS'):
-            self.filters = self.module.FILTERS
-
-
 @misc.singleton
-class PlateManager:
+class Manager:
 
     def __init__(self):
         self.plates = self._load_plates()

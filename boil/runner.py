@@ -1,18 +1,16 @@
 import os
 
-from boil.discovery import PlateManager
-from boil.environment import PlateEnvironment
+from boil.plate.environment import Environment
+from boil.plate.manager import Manager
+from boil.plate.renderer import Renderer
 from boil.common.filters import humanize
-from boil.renderer import Renderer
 from boil.utils.display import display
 from boil.vars.loader import VariableLoader
 
 
 def run_plate(plate_name):
-    plate_manager = PlateManager()
-    plate = plate_manager.get_plate(plate_name)
-
-    env = PlateEnvironment(plate)
+    plate = Manager().get_plate(plate_name)
+    env = Environment(plate)
 
     display("Initializing new %s. Please provide the following variables:"
             % humanize(plate_name))

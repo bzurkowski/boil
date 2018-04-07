@@ -3,11 +3,11 @@ import jinja2
 from boil.common import filters
 
 
-class PlateEnvironment(jinja2.Environment):
+class Environment(jinja2.Environment):
 
     def __init__(self, plate, **kwargs):
         self.plate = plate
-        super(PlateEnvironment, self).__init__(
+        super(Environment, self).__init__(
             loader=jinja2.PackageLoader(plate.name),
             keep_trailing_newline=True, **kwargs)
         self._setup_filters()

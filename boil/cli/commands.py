@@ -1,4 +1,4 @@
-from boil.discovery import PlateManager
+from boil.plate.manager import Manager
 from boil.exceptions import PlateNotFound
 from boil import runner
 from boil.utils.display import display
@@ -18,7 +18,7 @@ class ListPlates(Command):
         display('\n'.join(plate_names))
 
     def _list_plates(self):
-        return PlateManager().list_plates()
+        return Manager().list_plates()
 
 
 class SearchPlates(Command):
@@ -34,7 +34,7 @@ class SearchPlates(Command):
             display("No plates found.")
 
     def _search_plates(self, phrase):
-        return PlateManager().search_plates(phrase)
+        return Manager().search_plates(phrase)
 
 
 class RunPlate(Command):
