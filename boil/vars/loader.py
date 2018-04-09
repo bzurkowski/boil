@@ -4,23 +4,23 @@ from boil.utils.display import prompt
 
 class VariableLoader:
 
-    def __init__(self, var_defs):
-        self.var_defs = var_defs
+    def __init__(self, vars):
+        self.vars = vars
 
     def get_vars(self):
-        collected_vars = {}
-        for var in self.var_defs:
-            collected_vars[var['name']] = self._prompt_var(var)
-        return collected_vars
+        collected_values = {}
+        for var in self.vars:
+            collected_values[var.name] = self._collect_var(var)
+        return collected_values
 
-    def _prompt_var(self, var):
+    def _collect_var(self, var):
         prompt_msg = self._build_prompt_msg(var)
         return prompt(prompt_msg)
 
     def _build_prompt_msg(self, var):
-        var_name = humanize(var['name'])
-        example = var.get('example')
-        default = var.get('default')
+        var_name = humanize(var.name)
+        example = var.example
+        default = var.default
 
         hint = None
         if default:
