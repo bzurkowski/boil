@@ -5,19 +5,19 @@ class Plate:
 
     def __init__(self, module):
         self.module = module
-        self._load_module_data()
+        self._load_plate_data()
 
-    def _load_module_data(self):
-        self.name = self.module.__name__
-        self.vars = self._load_vars()
-        self.filters = self._load_filters()
+    def _load_plate_data(self):
+        module_name = self.module.__name__
 
-    def _load_vars(self):
+        self.name = module_name.split('.')[-1]
+        self.module_name = module_name
+
+        self.vars = []
+        self.filters = {}
+
         if hasattr(self.module, 'VARS'):
-            return parse_vars(self.module.VARS)
-        return []
+            self.vars = parse_vars(self.module.VARS)
 
-    def _load_filters(self):
         if hasattr(self.module, 'FILTERS'):
-            return self.module.FILTERS
-        return {}
+            self.filters = self.module.FILTERS

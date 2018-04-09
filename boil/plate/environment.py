@@ -8,7 +8,7 @@ class Environment(jinja2.Environment):
     def __init__(self, plate, **kwargs):
         self.plate = plate
         super(Environment, self).__init__(
-            loader=jinja2.PackageLoader(plate.name),
+            loader=jinja2.PackageLoader(plate.module_name),
             keep_trailing_newline=True, **kwargs)
         self._setup_filters()
 
