@@ -7,11 +7,14 @@ class Environment(jinja2.Environment):
 
     def __init__(self, plate, **kwargs):
         self.plate = plate
-        super(Environment, self).__init__(
-            loader=jinja2.PackageLoader(plate.module_name),
-            keep_trailing_newline=True, **kwargs)
+        self._set_defaults(kwargs)
+        loader = jinja2.PackageLoader(plate.module_name)
+        super(Environment, self).__init__(loader=loader, **kwargs)
         self._setup_filters()
 
+    def _set_defaults(self, kwargs):
+        kwargs.setdefault('keep_trailing_newline', True)
+
     def _setup_filters(self):
-        self.filters.update(filters.PLATE_COMMON_FILTERS)
+        self.filters.update(filters.PLATE_FILTERS)
         self.filters.update(self.plate.filters)

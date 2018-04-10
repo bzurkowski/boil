@@ -13,7 +13,7 @@ ordinal = inflection.ordinal
 ordinalize = inflection.ordinalize
 
 
-PLATE_COMMON_FILTERS = {
+PLATE_FILTERS = {
     'camelize': camelize,
     'underscore': underscore,
     'dasherize': dasherize,
