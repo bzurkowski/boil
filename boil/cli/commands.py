@@ -1,7 +1,7 @@
 from boil.plate.manager import Manager
 from boil.exceptions import PlateNotFound
 from boil import runner
-from boil.utils.display import display
+from boil.utils.display import display, display_list
 
 
 class Command:
@@ -14,8 +14,8 @@ class ListPlates(Command):
 
     def execute(self, args):
         plate_names = self._list_plates()
-        display("Available plates:")
-        display('\n'.join(plate_names))
+        display("Available plates:", bold=True)
+        display_list(sorted(plate_names))
 
     def _list_plates(self):
         return Manager().get_plate_names()
@@ -28,8 +28,8 @@ class SearchPlates(Command):
         plate_names = self._search_plates(phrase)
         num_found = len(plate_names)
         if num_found > 0:
-            display("Found plates (%s):" % num_found)
-            display('\n'.join(plate_names))
+            display("Found plates (%s):" % num_found, bold=True)
+            display_list(sorted(plate_names))
         else:
             display("No plates found.")
 
