@@ -2,11 +2,13 @@ import pkg_resources
 
 from boil.exceptions import PlateNotFound
 from boil.plate import Plate
-from boil.utils import misc
+from boil.utils.misc import singleton
 
 
-@misc.singleton
+@singleton
 class Manager:
+
+    ENTRY_NAMESPACE = 'boil.plates'
 
     def __init__(self):
         self.plates = self._load_plates()
@@ -16,15 +18,14 @@ class Manager:
             raise PlateNotFound(plate_name=plate_name)
         return self.plates[plate_name]
 
-    def list_plates(self):
+    def get_plate_names(self):
         return self.plates.keys()
-
-    def search_plates(self, phrase):
-        return [plate_name for plate_name in self.list_plates()
-                if phrase in plate_name]
 
     def _load_plates(self):
         plates = {}
-        for entry_point in pkg_resources.iter_entry_points('boil.plates'):
+        for entry_point in self._iter_entry_points():
             plates[entry_point.name] = Plate(entry_point.load())
         return plates
+
+    def _iter_entry_points(self):
+        return iter(pkg_resources.iter_entry_points(self.ENTRY_NAMESPACE))

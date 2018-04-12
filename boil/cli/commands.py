@@ -18,7 +18,7 @@ class ListPlates(Command):
         display('\n'.join(plate_names))
 
     def _list_plates(self):
-        return Manager().list_plates()
+        return Manager().get_plate_names()
 
 
 class SearchPlates(Command):
@@ -34,7 +34,8 @@ class SearchPlates(Command):
             display("No plates found.")
 
     def _search_plates(self, phrase):
-        return Manager().search_plates(phrase)
+        plate_names = Manager().get_plate_names()
+        return [name for name in plate_names if phrase in name]
 
 
 class RunPlate(Command):
