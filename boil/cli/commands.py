@@ -1,7 +1,7 @@
 import re
 
 from boil.plate.manager import Manager
-from boil.exceptions import PlateNotFound
+from boil.exceptions import BoilError, PlateNotFound
 from boil import runner
 from boil.utils.display import display, display_list
 
@@ -48,6 +48,9 @@ class RunPlate(Command):
             runner.run_plate(plate_name)
         except PlateNotFound:
             display("Plate not found.", color='red')
+        except BoilError as ex:
+            display("An error ocurred while rendering a plate: %s" % str(ex),
+                    color='red')
 
     def _normalize_plate_name(self, name):
         return re.sub(r"\W", '_', name)

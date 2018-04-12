@@ -15,7 +15,7 @@ class Manager:
 
     def get_plate(self, plate_name):
         if plate_name not in self.plates:
-            raise PlateNotFound(plate_name=plate_name)
+            raise PlateNotFound(name=plate_name)
         return self.plates[plate_name]
 
     def get_plate_names(self):

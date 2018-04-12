@@ -9,4 +9,9 @@ class BoilError(Exception):
 
 class PlateNotFound(BoilError):
 
-    message = "Plate '%(plate_name)s' not found."
+    message = "Plate '%(name)s' not found."
+
+
+class ArtifactAlreadyExists(BoilError):
+
+    message = "Artifact '%(name)s' already exists in target directory."
