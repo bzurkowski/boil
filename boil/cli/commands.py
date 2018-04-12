@@ -1,3 +1,5 @@
+import re
+
 from boil.plate.manager import Manager
 from boil.exceptions import PlateNotFound
 from boil import runner
@@ -41,8 +43,11 @@ class SearchPlates(Command):
 class RunPlate(Command):
 
     def execute(self, args):
-        plate_name = args['<plate_name>']
+        plate_name = self._normalize_plate_name(args['<plate_name>'])
         try:
             runner.run_plate(plate_name)
         except PlateNotFound:
-            display.display("Plate not found.", color='red')
+            display("Plate not found.", color='red')
+
+    def _normalize_plate_name(self, name):
+        return re.sub(r"\W", '_', name)
