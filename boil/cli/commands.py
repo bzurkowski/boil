@@ -46,7 +46,7 @@ class RenderPlate(Command):
 
     def execute(self, args):
         plate_name = self._normalize_name(args['<plate_name>'])
-        target_dir = os.getcwd()
+        target_dir = args['--target-dir'] or os.getcwd()
 
         display("Initializing new %s." % humanize(plate_name))
         try:
