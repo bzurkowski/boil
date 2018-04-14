@@ -18,25 +18,23 @@ Boil
 
 ---------------
 
-**Initialization of new software projects should be quick and easy.**
+**Initialization of new software projects should be quick and easy. Period.**
+
+Boil's mission is to build a centralized, pluggable and community-driver repository of project templates for various technologies, managed via single API.
 
 Boil tries to solve the following problems:
 
-- Wasting time on the initialisation of new software projects from scratch: creating a file structure, thinking about naming conventions, researching best practices - almost always requires documentation lookup.
+- **Wasting time on initializing new software projects from scratch**
 
-- No consistency between projects. Most developers initiate projects in their own way, which is often incorrect or outdated.
+  Creating a file structure, thinking about naming conventions, determining dependencies, completing basic metadata... It almost always requires documentation lookup. This time can be usefully spent on something else. For example, making coffee or eating a watermelon!
 
-- Burden of bootstrapping tools for different technologies (separate app generator for Ansible, Django, Rails, etc.).
+- **Poor quality and lack of consistency between projects**
 
-- Lack of boilerplates for many software categories. If they already exist, they require manual adjustments.
+  Most developers initiate projects in their own way without complying with generally accepted standards. Often due to lack of time, projects are initialized neglectfully, have no maintenance-friendly structure and are poorly documented.
 
-Here is how:
+- **Burden of bootstrapping tools**
 
-- Leverage the `Jinja <http://jinja.pocoo.org/>`_ templating engine to automatically generate project files. Ask the user for a minimal set of variables (such as project name, author, license etc.) and inject them into the right place.
-
-- Organize a centralized, plugable repository for project templates. Let the community decide on their final form.
-
-- Provide a single API for initializing projects in any technology.
+  Separate app generator for Ansible, Django, Rails, etc. Their advantage is greater flexibility and extended functionality, but it is not always what you needed. Switching between one and the other is another waste of time caused by the change of API causing the need to reach the documentation once again.
 
 Installation
 ------------
