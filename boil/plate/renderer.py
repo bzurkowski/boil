@@ -7,13 +7,13 @@ from boil.utils.file_utils import copy_tree, temp_dir
 from boil.vars.loader import VariableLoader
 
 
-class PlateRunner:
+class PlateRenderer:
 
     """
-    This is the primary class responsible for running a plate. It generates
-    the project structure inside a temporary directory and copies its contents
+    This is the primary class responsible for rendering plates. It generates
+    project file structure inside a temporary directory and copies its contents
     to the destination directory afterwards, ensuring that there are no
-    artifact conflicts.
+    conflicts with already existing artifacts.
     """
 
     def __init__(self, plate, target_dir, overwrite=False):
@@ -21,14 +21,12 @@ class PlateRunner:
         self._target_dir = target_dir
         self._overwrite = overwrite
 
-    def run_plate(self):
-        vars_loader = VariableLoader(self._plate.vars)
-        vars = vars_loader.get_vars()
-
+    def render(self):
+        vars = VariableLoader(self._plate.vars).get_vars()
         env = Environment(self._plate.module_name)
 
         with temp_dir() as tmp_dir:
-            TemplateRenderer(env, vars).render(tmp_dir)
+            TemplateRenderer(env, vars, tmp_dir).render()
 
             if not self._overwrite:
                 target_names = os.listdir(self._target_dir)

@@ -25,4 +25,4 @@ def get_command(args):
     elif args['search']:
         return cmd.SearchPlates
     elif args['new']:
-        return cmd.RunPlate
+        return cmd.RenderPlate
