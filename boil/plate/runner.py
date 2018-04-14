@@ -1,13 +1,13 @@
 import os
 
 from boil.exceptions import ArtifactAlreadyExists
-from boil.template.renderer import Renderer
+from boil.template.renderer import TemplateRenderer
 from boil.template.environment import Environment
 from boil.utils.file_utils import copy_tree, temp_dir
 from boil.vars.loader import VariableLoader
 
 
-class Runner:
+class PlateRunner:
 
     """
     This is the primary class responsible for running a plate. It generates
@@ -28,8 +28,7 @@ class Runner:
         env = Environment(self._plate.module_name)
 
         with temp_dir() as tmp_dir:
-            template_renderer = Renderer(env, vars)
-            template_renderer.render(tmp_dir)
+            TemplateRenderer(env, vars).render(tmp_dir)
 
             if not self._overwrite:
                 target_names = os.listdir(self._target_dir)

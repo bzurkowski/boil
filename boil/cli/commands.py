@@ -3,8 +3,8 @@ import re
 
 from boil.common.filters import humanize
 from boil.exceptions import BoilError, PlateNotFound
-from boil.plate.manager import Manager
-from boil.plate.runner import Runner
+from boil.plate.manager import PlateManager
+from boil.plate.runner import PlateRunner
 from boil.utils.display import display, display_list
 
 
@@ -22,7 +22,7 @@ class ListPlates(Command):
         display_list(sorted(plate_names))
 
     def _list_plates(self):
-        return Manager().get_plate_names()
+        return PlateManager().get_plate_names()
 
 
 class SearchPlates(Command):
@@ -38,7 +38,7 @@ class SearchPlates(Command):
             display("No plates found.")
 
     def _search_plates(self, phrase):
-        plate_names = Manager().get_plate_names()
+        plate_names = PlateManager().get_plate_names()
         return [name for name in plate_names if phrase in name]
 
 
@@ -57,8 +57,8 @@ class RunPlate(Command):
 
     def _run_plate(self, plate_name, target_dir):
         try:
-            plate = Manager().get_plate(plate_name)
-            Runner(plate, target_dir).run_plate()
+            plate = PlateManager().get_plate(plate_name)
+            PlateRunner(plate, target_dir).run_plate()
         except PlateNotFound:
             display("Plate not found.", color='red')
         except BoilError as ex:

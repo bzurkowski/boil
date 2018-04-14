@@ -8,10 +8,10 @@ class VariableLoader:
         self._vars = vars
 
     def get_vars(self):
-        collected_values = {}
+        collected_vars = {}
         for var in self._vars:
-            collected_values[var.name] = self._collect_var(var)
-        return collected_values
+            collected_vars[var.name] = self._collect_var(var)
+        return collected_vars
 
     def _collect_var(self, var):
         prompt_msg = self._build_prompt_msg(var)

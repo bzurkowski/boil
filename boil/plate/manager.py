@@ -6,7 +6,7 @@ from boil.utils.misc import singleton
 
 
 @singleton
-class Manager:
+class PlateManager:
 
     ENTRY_NAMESPACE = 'boil.plates'
 
