@@ -1,8 +1,10 @@
+import os
 import re
 
-from boil.plate.manager import Manager
+from boil.common.filters import humanize
 from boil.exceptions import BoilError, PlateNotFound
-from boil import runner
+from boil.plate.manager import Manager
+from boil.plate.runner import Runner
 from boil.utils.display import display, display_list
 
 
@@ -43,14 +45,22 @@ class SearchPlates(Command):
 class RunPlate(Command):
 
     def execute(self, args):
-        plate_name = self._normalize_plate_name(args['<plate_name>'])
+        plate_name = self._normalize_name(args['<plate_name>'])
+        target_dir = os.getcwd()
+
+        display("Initializing new %s." % humanize(plate_name))
+        self._run_plate(plate_name, target_dir)
+        display("Done!", color='green')
+
+    def _normalize_name(self, name):
+        return re.sub(r"\W", '_', name)
+
+    def _run_plate(self, plate_name, target_dir):
         try:
-            runner.run_plate(plate_name)
+            plate = Manager().get_plate(plate_name)
+            Runner(plate, target_dir).run_plate()
         except PlateNotFound:
             display("Plate not found.", color='red')
         except BoilError as ex:
             display("An error ocurred while rendering a plate: %s" % str(ex),
                     color='red')
-
-    def _normalize_plate_name(self, name):
-        return re.sub(r"\W", '_', name)
