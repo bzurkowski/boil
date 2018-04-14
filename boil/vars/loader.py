@@ -5,11 +5,11 @@ from boil.utils.display import prompt
 class VariableLoader:
 
     def __init__(self, vars):
-        self.vars = vars
+        self._vars = vars
 
     def get_vars(self):
         collected_values = {}
-        for var in self.vars:
+        for var in self._vars:
             collected_values[var.name] = self._collect_var(var)
         return collected_values
 

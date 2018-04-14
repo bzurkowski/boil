@@ -17,24 +17,24 @@ class Runner:
     """
 
     def __init__(self, plate, target_dir, overwrite=False):
-        self.plate = plate
-        self.target_dir = target_dir
-        self.overwrite = overwrite
+        self._plate = plate
+        self._target_dir = target_dir
+        self._overwrite = overwrite
 
     def run_plate(self):
-        vars_loader = VariableLoader(self.plate.vars)
+        vars_loader = VariableLoader(self._plate.vars)
         vars = vars_loader.get_vars()
 
-        env = Environment(self.plate.module_name)
+        env = Environment(self._plate.module_name)
 
         with temp_dir() as tmp_dir:
             template_renderer = Renderer(env, vars)
             template_renderer.render(tmp_dir)
 
-            if not self.overwrite:
-                target_names = os.listdir(self.target_dir)
+            if not self._overwrite:
+                target_names = os.listdir(self._target_dir)
                 for name in os.listdir(tmp_dir):
                     if name in target_names:
                         raise ArtifactAlreadyExists(name=name)
 
-            copy_tree(tmp_dir, self.target_dir)
+            copy_tree(tmp_dir, self._target_dir)
