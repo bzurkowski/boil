@@ -24,7 +24,7 @@ Boil tries to solve the following problems:
 
 - **Wasting time on initializing new software projects from scratch**
 
-  Creating a file structure, thinking about naming conventions, determining dependencies, completing basic metadata... almost always requires documentation lookup. This time can be usefully spent on something else. For example, making coffee or eating a watermelon!
+  Creating a file structure, thinking about naming conventions, determining dependencies, completing basic metadata... almost always requires documentation lookup. This time can be usefully spent on something else.
 
 - **Poor quality and lack of consistency between projects**
 
@@ -32,7 +32,7 @@ Boil tries to solve the following problems:
 
 - **Burden of bootstrapping tools**
 
-  Separate app generator for Ansible, Django, Rails, etc.. Their advantage is greater flexibility and extended functionality, but it is not always what you needed. Switching between one and the other may be troublesome considering the variety of APIs and different configuration options for each tool.
+  Separate app generator for Ansible, Django, Rails, etc.. Their advantage is greater flexibility and extended functionality, but it is not always what you need. Switching between one and the other may be troublesome considering the variety of APIs and different configuration options for each tool.
 
 Boil's mission is to build a centralized, pluggable and community-driver repository of project templates for various technologies, managed via single API.
 
@@ -52,8 +52,12 @@ Usage
     Usage:
         boil list
         boil search <phrase>
-        boil new <plate_name>
+        boil new <plate_name> [--target-dir=<dir>]
         boil -h | --help
+
+    Options:
+        --target-dir=<dir>  Target directory where project files should be
+                            populated.
 
 List all available plates::
 
