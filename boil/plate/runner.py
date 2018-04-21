@@ -7,10 +7,10 @@ from boil.utils.file_utils import copy_tree, temp_dir
 from boil.vars.loader import VariableLoader
 
 
-class PlateRenderer:
+class PlateRunner:
 
     """
-    This is the primary class responsible for rendering plates. It generates
+    This is the primary class responsible for running plates. It generates
     project file structure inside a temporary directory and copies its contents
     to the destination directory afterwards, ensuring that there are no
     conflicts with already existing artifacts.
@@ -21,7 +21,7 @@ class PlateRenderer:
         self._target_dir = target_dir
         self._overwrite = overwrite
 
-    def render(self):
+    def run(self):
         vars = VariableLoader(self._plate.vars).get_vars()
         env = Environment(self._plate.module_name)
 
