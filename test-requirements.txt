@@ -1,2 +1,4 @@
 tox
+pytest
+mock
 flake8
