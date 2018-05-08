@@ -22,17 +22,7 @@ def main():
     args = docopt(__doc__)
 
     try:
-        command = get_command(args)
-        command().execute(args)
+        cmd.get_command(args).execute(args)
     except BoilError as ex:
         display("An error ocurred while executing the command: %s" % str(ex),
                 color='red')
-
-
-def get_command(args):
-    if args['list']:
-        return cmd.ListPlates
-    elif args['search']:
-        return cmd.SearchPlates
-    elif args['new']:
-        return cmd.RenderPlate

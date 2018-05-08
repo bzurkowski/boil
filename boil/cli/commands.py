@@ -57,3 +57,17 @@ class RenderPlate(Command):
     def _render_plate(self, plate_name, target_dir):
         plate = PlateManager().get_plate(plate_name)
         PlateRunner(plate, target_dir).run()
+
+
+def get_command(args):
+    cmd_class = get_command_class(args)
+    return cmd_class()
+
+
+def get_command_class(args):
+    if args['list']:
+        return ListPlates
+    elif args['search']:
+        return SearchPlates
+    elif args['new']:
+        return RenderPlate

@@ -30,8 +30,8 @@ class PlateRunner:
 
             if not self._overwrite:
                 target_names = os.listdir(self._target_dir)
-                for name in os.listdir(tmp_dir):
-                    if name in target_names:
-                        raise ArtifactAlreadyExists(name=name)
+                for artifact_name in os.listdir(tmp_dir):
+                    if artifact_name in target_names:
+                        raise ArtifactAlreadyExists(name=artifact_name)
 
             copy_tree(tmp_dir, self._target_dir)
