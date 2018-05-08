@@ -2,7 +2,6 @@ import os
 import re
 
 from boil.common.filters import humanize
-from boil.exceptions import BoilError, PlateNotFound
 from boil.plate.manager import PlateManager
 from boil.plate.runner import PlateRunner
 from boil.utils.display import display, display_list
@@ -49,14 +48,8 @@ class RenderPlate(Command):
         target_dir = args['--target-dir'] or os.getcwd()
 
         display("Initializing new %s." % humanize(plate_name))
-        try:
-            self._render_plate(plate_name, target_dir)
-            display("Done!", color='green')
-        except PlateNotFound:
-            display("Plate not found.", color='red')
-        except BoilError as ex:
-            display("An error ocurred while rendering a plate: %s" % str(ex),
-                    color='red')
+        self._render_plate(plate_name, target_dir)
+        display("Done!", color='green')
 
     def _normalize_name(self, name):
         return re.sub(r"\W", '_', name)

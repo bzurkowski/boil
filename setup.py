@@ -1,25 +1,25 @@
 from setuptools import setup, find_packages
 
 
-def readme():
-    with open('README.rst') as f:
-        return f.read()
+def get_description():
+    with open('README.rst') as readme:
+        return readme.read()
 
 
-def load_requirements():
+def get_requirements():
     with open('requirements.txt') as requirements:
         return requirements.read().splitlines()
 
 
 setup(
     name='boil',
-    version='0.1.1',
+    version='0.1.4',
     description='Radically simple app initialization',
-    long_description=readme(),
+    long_description=get_description(),
     url='https://github.com/bzurkowski/boil',
     author='Bartosz Zurkowski',
     license='MIT',
-    install_requires=load_requirements(),
+    install_requires=get_requirements(),
     packages=find_packages(),
     entry_points={
         'console_scripts': [

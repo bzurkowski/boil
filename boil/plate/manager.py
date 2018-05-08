@@ -19,7 +19,7 @@ class PlateManager:
         return self._plates[plate_name]
 
     def get_plate_names(self):
-        return self._plates.keys()
+        return [plate.name for plate in self._plates.values()]
 
     def _load_plates(self):
         plates = {}

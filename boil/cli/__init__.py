@@ -14,13 +14,19 @@ Options:
 from docopt import docopt
 
 from boil.cli import commands as cmd
+from boil.exceptions import BoilError
+from boil.utils.display import display
 
 
 def main():
     args = docopt(__doc__)
 
-    command = get_command(args)
-    command().execute(args)
+    try:
+        command = get_command(args)
+        command().execute(args)
+    except BoilError as ex:
+        display("An error ocurred while executing the command: %s" % str(ex),
+                color='red')
 
 
 def get_command(args):
