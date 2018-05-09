@@ -20,11 +20,13 @@ Boil
 
 **Initialization of new software projects should be quick and easy. Period.**
 
-Boil tries to solve the following problems:
+Boil's mission is to build a centralized, pluggable and community-driver repository of project templates for various technologies, managed via single API.
+
+These are the problems that it aims to solve:
 
 - **Wasting time on initializing new software projects from scratch**
 
-  Creating a file structure, thinking about naming conventions, determining dependencies, completing basic metadata... almost always requires documentation lookup. This time can be usefully spent on something else.
+  In particular: creating a file structure, checking naming conventions, determining dependencies and completing basic metadata. No matter how many times we would initialize the project, it almost always requires documentation lookup. This time can be usefully spent on something else.
 
 - **Poor quality and lack of consistency between projects**
 
@@ -33,8 +35,6 @@ Boil tries to solve the following problems:
 - **Burden of bootstrapping tools**
 
   Separate app generator for Ansible, Django, Rails, etc.. Their advantage is greater flexibility and extended functionality, but it is not always what you need. Switching between one and the other may be troublesome considering the variety of APIs and different configuration options for each tool.
-
-Boil's mission is to build a centralized, pluggable and community-driver repository of project templates for various technologies, managed via single API.
 
 Installation
 ------------
