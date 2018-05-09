@@ -16,6 +16,10 @@ Boil
 .. image:: https://img.shields.io/pypi/pyversions/boil.svg
     :target: https://pypi.python.org/pypi/boil
 
+.. image:: https://img.shields.io/codecov/c/github/bzurkowski/boil.svg
+    :target: https://codecov.io/gh/bzurkowski/boil
+
+
 ---------------
 
 **Initialization of new software projects should be quick and easy. Period.**
