@@ -41,20 +41,20 @@ class SearchPlates(Command):
         return [name for name in plate_names if phrase in name]
 
 
-class RenderPlate(Command):
+class RunPlate(Command):
 
     def execute(self, args):
         plate_name = self._normalize_name(args['<plate_name>'])
-        target_dir = args['--target-dir'] or os.getcwd()
+        target_dir = args.get('--target-dir') or os.getcwd()
 
         display("Initializing new %s." % humanize(plate_name))
-        self._render_plate(plate_name, target_dir)
+        self._run_plate(plate_name, target_dir)
         display("Done!", color='green')
 
     def _normalize_name(self, name):
         return re.sub(r"\W", '_', name)
 
-    def _render_plate(self, plate_name, target_dir):
+    def _run_plate(self, plate_name, target_dir):
         plate = PlateManager().get_plate(plate_name)
         PlateRunner(plate, target_dir).run()
 
@@ -70,4 +70,4 @@ def get_command_class(args):
     elif args['search']:
         return SearchPlates
     elif args['new']:
-        return RenderPlate
+        return RunPlate
