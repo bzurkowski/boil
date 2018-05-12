@@ -5,9 +5,9 @@ class Plate:
 
     def __init__(self, module):
         self.module = module
-        self._load_module_data()
+        self._load_data()
 
-    def _load_module_data(self):
+    def _load_data(self):
         module_name = self.module.__name__
 
         self.name = module_name.split('.')[-1]

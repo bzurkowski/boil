@@ -6,5 +6,5 @@ class Variable:
         self.example = example
 
 
-def parse_vars(raw_vars):
-    return [Variable(**raw_var) for raw_var in raw_vars]
+def parse_vars(var_defs):
+    return [Variable(**var_def) for var_def in var_defs]

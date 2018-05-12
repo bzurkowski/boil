@@ -24,8 +24,10 @@ class PlateManager:
     def _load_plates(self):
         plates = {}
         for entry_point in self._iter_entry_points():
-            plates[entry_point.name] = Plate(entry_point.load())
+            plate_module = entry_point.load()
+            plates[entry_point.name] = Plate(plate_module)
         return plates
 
     def _iter_entry_points(self):
-        return iter(pkg_resources.iter_entry_points(self.ENTRY_NAMESPACE))
+        return pkg_resources.iter_entry_points(
+            self.ENTRY_NAMESPACE)
