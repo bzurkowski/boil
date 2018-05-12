@@ -1,5 +1,6 @@
 VARS = [
     {'name': 'role_name',
+     'required': True,
      'example': 'redis'},
     {'name': 'description',
      'example': 'Role for setting Redis instance up'},

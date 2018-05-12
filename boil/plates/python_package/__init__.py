@@ -1,5 +1,6 @@
 VARS = [
     {'name': 'package_name',
+     'required': True,
      'example': 'fancy_package'},
     {'name': 'description',
      'example': 'Super fancy package'},

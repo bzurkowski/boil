@@ -1,5 +1,5 @@
 from boil.common.filters import humanize
-from boil.utils.display import prompt
+from boil.utils.display import display, prompt
 
 
 class VariableLoader:
@@ -15,10 +15,20 @@ class VariableLoader:
 
     def _collect_var(self, var):
         prompt_msg = self._build_prompt_msg(var)
-        return prompt(prompt_msg)
+        value = prompt(prompt_msg)
+        if not value:
+            default = var.default
+            if default:
+                display("Using default: %s." % default)
+                value = default
+        while var.required and not value:
+            display("Value required.", color='red')
+            value = prompt(prompt_msg)
+        return value
 
     def _build_prompt_msg(self, var):
         var_name = humanize(var.name)
+
         example = var.example
         default = var.default
 

@@ -1,7 +1,8 @@
 class Variable:
 
-    def __init__(self, name, default=None, example=None):
+    def __init__(self, name, required=False, default=None, example=None):
         self.name = name
+        self.required = required
         self.default = default
         self.example = example
 
