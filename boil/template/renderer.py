@@ -21,7 +21,7 @@ class TemplateRenderer:
         ensure_dir(target_path)
 
         with open(target_path, 'w') as target:
-            target.write(template.render(self._vars))
+            target.write(template.render(self._vars).encode('utf8'))
 
     def _build_target_path(self, template_path):
         target_path = os.path.join(self._target_dir, template_path)
