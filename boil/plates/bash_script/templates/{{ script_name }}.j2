@@ -1,0 +1,197 @@
+#!/usr/bin/env bash
+
+set -o nounset
+set -o errexit
+
+trap 'echo "Aborting due to errexit on line $LINENO. Exit code: $?" >&2' ERR
+
+set -o errtrace
+set -o pipefail
+
+IFS=$'\n\t'
+
+###############################################################################
+# Environment
+###############################################################################
+
+_ME=$(basename "${0}")
+
+###############################################################################
+# Debug
+###############################################################################
+
+__DEBUG_COUNTER=0
+_debug() {
+  if [[ "${_USE_DEBUG:-"0"}" -eq 1 ]]
+  then
+    __DEBUG_COUNTER=$((__DEBUG_COUNTER+1))
+    printf "🐛  %s " "${__DEBUG_COUNTER}"
+    "${@}"
+    printf "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――\\n"
+  fi
+}
+
+debug() {
+  _debug echo "${@}"
+}
+
+###############################################################################
+# Die
+###############################################################################
+
+_die() {
+  printf "❌  "
+  "${@}" 1>&2
+  exit 1
+}
+
+die() {
+  _die echo "${@}"
+}
+
+###############################################################################
+# Help
+###############################################################################
+
+_print_help() {
+  cat <<HEREDOC
+{{ script_name | humanize }}
+{{ description }}
+
+Usage:
+  ${_ME} [--options] [<arguments>]
+  ${_ME} -h | --help
+
+Options:
+  -h --help  Display this help information.
+HEREDOC
+}
+
+###############################################################################
+# Options
+###############################################################################
+
+# Normalize Options ###########################################################
+
+optstring=xo:h
+
+{% raw %}
+while ((${#}))
+do
+  case ${1} in
+    -[!-]?*)
+      for ((i=1; i<${#1}; i++))
+      do
+        c=${1:i:1}
+        options+=("-${c}")
+
+        if [[ ${optstring} = *"${c}:"* && ${1:i+1} ]]
+        then
+          options+=("${1:i+1}")
+          break
+        fi
+      done
+      ;;
+    --?*=*)
+      options+=("${1%%=*}" "${1#*=}")
+      ;;
+    --)
+      options+=(--endopts)
+      shift
+      options+=("${@}")
+      break
+      ;;
+    *)
+      options+=("${1}")
+      ;;
+  esac
+
+  shift
+done
+{% endraw %}
+
+set -- "${options[@]:-}"
+unset options
+
+# Parse Options ###############################################################
+
+# Initialize program option variables.
+_PRINT_HELP=0
+_USE_DEBUG=0
+
+# Initialize additional expected option variables.
+_OPTION_X=0
+_SHORT_OPTION_WITH_PARAMETER=""
+_LONG_OPTION_WITH_PARAMETER=""
+
+_require_argument() {
+  local _option="${1:-}"
+  local _argument="${2:-}"
+
+  if [[ -z "${_argument}" ]] || [[ "${_argument}" =~ ^- ]]
+  then
+    _die printf "Option requires a argument: %s\\n" "${_option}"
+  fi
+}
+
+{% raw %}
+while [ ${#} -gt 0 ]
+do
+  __option="${1:-}"
+  __maybe_param="${2:-}"
+  case "${__option}" in
+    -h|--help)
+      _PRINT_HELP=1
+      ;;
+    --debug)
+      _USE_DEBUG=1
+      ;;
+    -x|--option-x)
+      _OPTION_X=1
+      ;;
+    -o)
+      _require_argument "${__option}" "${__maybe_param}"
+      _SHORT_OPTION_WITH_PARAMETER="${__maybe_param}"
+       shift
+      ;;
+    --long-option-with-argument)
+      _require_argument "${__option}" "${__maybe_param}"
+      _LONG_OPTION_WITH_PARAMETER="${__maybe_param}"
+      shift
+      ;;
+    --endopts)
+      break
+      ;;
+    -*)
+      _die printf "Unexpected option: %s\\n" "${__option}"
+      ;;
+  esac
+  shift
+done
+{% endraw %}
+
+###############################################################################
+# Program Functions
+###############################################################################
+
+_{{ script_name | underscore }}() {
+  _debug printf ">> Performing operation...\\n"
+
+  # Place script implementation here
+}
+
+
+###############################################################################
+# Main
+###############################################################################
+
+_main() {
+  if ((_PRINT_HELP))
+  then
+    _print_help
+  else
+    _{{ script_name | underscore }} "$@"
+  fi
+}
+
+_main "$@"

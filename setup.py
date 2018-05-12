@@ -28,7 +28,8 @@ setup(
         'boil.plates': [
             'python_package = boil.plates.python_package',
             'python_script = boil.plates.python_script',
-            'ansible_role = boil.plates.ansible_role'
+            'ansible_role = boil.plates.ansible_role',
+            'bash_script = boil.plates.bash_script'
         ]
     },
     classifiers=[
