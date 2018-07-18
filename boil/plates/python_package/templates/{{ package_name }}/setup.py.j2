@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -6,13 +6,19 @@ def readme():
         return f.read()
 
 
+def get_requirements():
+    with open('requirements.txt') as requirements:
+        return requirements.read().splitlines()
+
+
 setup(
-    name='{{ package_name }}',
-    version='0.1',
+    name='{{ package_name | underscore }}',
+    version='0.1.0',
     description='{{ description }}',
     long_description=readme(),
     url='{{ url }}',
     author='{{ author }}',
     license='{{ license }}',
-    packages=['{{ package_name }}'],
+    install_requires=get_requirements(),
+    packages=find_packages(),
     zip_safe=False)
