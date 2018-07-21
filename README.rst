@@ -24,7 +24,7 @@ Boil
 
 **Initialization of new software projects should be quick and easy. Period.**
 
-Boil's mission is to build a centralized, pluggable and community-driver repository of project templates for various technologies, managed via single API.
+Boil's mission is to build a centralized, pluggable and community-driven repository of project templates for various technologies, managed via single API.
 
 These are the problems that it aims to solve:
 
