@@ -15,10 +15,14 @@ class TemplateRenderer:
 
     def render(self):
         for template_path in self._env.list_templates():
-            for exclude_pattern in self.PATH_EXCLUDE_PATTERNS:
-                if re.match(exclude_pattern, template_path):
-                    continue
-            self._render_template(template_path)
+            if self._is_valid_path(template_path):
+                self._render_template(template_path)
+
+    def _is_valid_path(self, template_path):
+        for exclude_pattern in self.PATH_EXCLUDE_PATTERNS:
+            if re.match(exclude_pattern, template_path):
+                return False
+        return True
 
     def _render_template(self, template_path):
         template = self._env.get_template(template_path)
