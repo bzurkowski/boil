@@ -130,7 +130,7 @@ _require_argument() {
 
   if [[ -z "${_argument}" ]] || [[ "${_argument}" =~ ^- ]]
   then
-    _die printf "Option requires a argument: %s\\n" "${_option}"
+    _die printf "Option requires an argument: %s\\n" "${_option}"
   fi
 }
 
@@ -175,8 +175,6 @@ done
 ###############################################################################
 
 _{{ script_name | underscore }}() {
-  _debug printf ">> Performing operation...\\n"
-
   # Place script implementation here
 }
 
