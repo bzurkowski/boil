@@ -30,7 +30,7 @@ class TemplateRenderer:
         target_path = self._build_target_path(template_path)
         ensure_dir(target_path)
 
-        with open(target_path, 'w') as target:
+        with open(target_path, 'wb') as target:
             target.write(template.render(self._vars).encode('utf8'))
 
     def _build_target_path(self, template_path):

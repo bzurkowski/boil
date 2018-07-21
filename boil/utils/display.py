@@ -1,6 +1,8 @@
 import math
 import sys
 
+from six.moves import input
+
 from boil.utils import ansi
 
 
@@ -40,4 +42,4 @@ def display_list(obj, cols=4, columnwise=True, gap=10):
 def prompt(msg=None):
     if msg:
         msg = ansi.format(msg, bold=True)
-    return raw_input(msg)
+    return input(msg)

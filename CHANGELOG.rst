@@ -12,6 +12,10 @@ and this project adheres to `Semantic Versioning`_.
 Unreleased_
 ------------
 
+Added
+/////
+- Python 3 support
+
 0.2.0_ - 2018-07-21
 --------------------
 

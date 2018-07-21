@@ -1,6 +1,7 @@
 import os
-from StringIO import StringIO
+
 from mock import patch
+from six.moves import StringIO
 import unittest
 
 from boil.cli import commands as cmd
@@ -10,9 +11,9 @@ from boil.utils.file_utils import temp_dir
 class CommandsTest(unittest.TestCase):
 
     @patch("sys.stdout", new_callable=StringIO)
-    @patch("__builtin__.raw_input")
-    def test_run_plate(self, mock_raw_input, mock_stdout):
-        mock_raw_input.return_value = 'foo'
+    @patch("boil.utils.display.input")
+    def test_run_plate(self, mock_input, mock_stdout):
+        mock_input.return_value = 'foo'
 
         with temp_dir() as target_dir:
             args = {'<plate_name>': 'python_package',
