@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ruby gem plate
 - License plate (MIT, Apache 2.0, GNU)
 - Excluding template paths by regex
+- setup.py command to build and publish the package
 
 ### Changed
 - Python plate: added testing environment
