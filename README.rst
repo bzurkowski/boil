@@ -113,3 +113,10 @@ Initialize new Ansible role::
 Initialize new plate::
 
     $ boil new plate
+
+Changelog
+---------
+
+All notable changes to this project are documented in the CHANGELOG_.
+
+.. _CHANGELOG: CHANGELOG.md
