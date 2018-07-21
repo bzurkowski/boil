@@ -12,6 +12,9 @@ and this project adheres to `Semantic Versioning`_.
 Unreleased_
 ------------
 
+0.2.0_ - 2018-07-21
+--------------------
+
 Added
 /////
 - Ruby gem plate
@@ -36,4 +39,5 @@ Added
 - Ansible role plate
 - Bash script plate
 
-.. _Unreleased: https://github.com/bzurkowski/boil/compare/v0.1.5...HEAD
+.. _Unreleased: https://github.com/bzurkowski/boil/compare/v0.2.0...HEAD
+.. _0.2.0: https://github.com/bzurkowski/boil/compare/v0.1.5...v0.2.0
