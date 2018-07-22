@@ -15,6 +15,7 @@ Unreleased_
 Added
 /////
 - Python 3 support
+- Exclude plate templates from gitignore: restore missing files from Ruby gem plate
 
 0.2.0_ - 2018-07-21
 --------------------
