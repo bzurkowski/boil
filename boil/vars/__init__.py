@@ -1,5 +1,4 @@
 class Variable:
-
     def __init__(self, name, required=False, default=None, example=None):
         self.name = name
         self.required = required

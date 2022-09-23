@@ -8,7 +8,7 @@ from boil.utils.misc import singleton
 @singleton
 class PlateManager:
 
-    ENTRY_NAMESPACE = 'boil.plates'
+    ENTRY_NAMESPACE = "boil.plates"
 
     def __init__(self):
         self._plates = self._load_plates()
@@ -29,5 +29,4 @@ class PlateManager:
         return plates
 
     def _iter_entry_points(self):
-        return pkg_resources.iter_entry_points(
-            self.ENTRY_NAMESPACE)
+        return pkg_resources.iter_entry_points(self.ENTRY_NAMESPACE)

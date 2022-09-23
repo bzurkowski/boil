@@ -24,5 +24,6 @@ def main():
     try:
         cmd.get_command(args).execute(args)
     except BoilError as ex:
-        display("An error ocurred while executing the command: %s" % str(ex),
-                color='red')
+        display(
+            "An error ocurred while executing the command: %s" % str(ex), color="red"
+        )

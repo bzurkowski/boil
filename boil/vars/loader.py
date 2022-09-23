@@ -3,7 +3,6 @@ from boil.utils.display import display, prompt
 
 
 class VariableLoader:
-
     def __init__(self, vars):
         self._vars = vars
 
@@ -22,7 +21,7 @@ class VariableLoader:
                 display("Using default: %s." % default)
                 value = default
         while var.required and not value:
-            display("Value required.", color='red')
+            display("Value required.", color="red")
             value = prompt(prompt_msg)
         return value
 

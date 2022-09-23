@@ -30,8 +30,8 @@ class TemplateRenderer:
         target_path = self._build_target_path(template_path)
         ensure_dir(target_path)
 
-        with open(target_path, 'wb') as target:
-            target.write(template.render(self._vars).encode('utf8'))
+        with open(target_path, "wb") as target:
+            target.write(template.render(self._vars).encode("utf8"))
 
     def _build_target_path(self, template_path):
         target_path = os.path.join(self._target_dir, template_path)
@@ -39,6 +39,6 @@ class TemplateRenderer:
         target_path_template = self._env.from_string(target_path)
         target_path = target_path_template.render(self._vars)
 
-        if target_path.endswith('.j2'):
+        if target_path.endswith(".j2"):
             target_path = os.path.splitext(target_path)[0]
         return target_path

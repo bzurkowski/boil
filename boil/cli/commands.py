@@ -8,13 +8,11 @@ from boil.utils.display import display, display_list
 
 
 class Command:
-
     def execute(self, args):
         raise NotImplementedError()
 
 
 class ListPlates(Command):
-
     def execute(self, args):
         plate_names = self._list_plates()
         display("Available plates:", bold=True)
@@ -25,9 +23,8 @@ class ListPlates(Command):
 
 
 class SearchPlates(Command):
-
     def execute(self, args):
-        phrase = args['<phrase>']
+        phrase = args["<phrase>"]
         plate_names = self._search_plates(phrase)
         num_found = len(plate_names)
         if num_found > 0:
@@ -42,17 +39,16 @@ class SearchPlates(Command):
 
 
 class RunPlate(Command):
-
     def execute(self, args):
-        plate_name = self._normalize_name(args['<plate_name>'])
-        target_dir = args.get('--target-dir') or os.getcwd()
+        plate_name = self._normalize_name(args["<plate_name>"])
+        target_dir = args.get("--target-dir") or os.getcwd()
 
         display("Initializing new %s." % humanize(plate_name))
         self._run_plate(plate_name, target_dir)
-        display("Done!", color='green')
+        display("Done!", color="green")
 
     def _normalize_name(self, name):
-        return re.sub(r"\W", '_', name)
+        return re.sub(r"\W", "_", name)
 
     def _run_plate(self, plate_name, target_dir):
         plate = PlateManager().get_plate(plate_name)
@@ -65,9 +61,9 @@ def get_command(args):
 
 
 def get_command_class(args):
-    if args['list']:
+    if args["list"]:
         return ListPlates
-    elif args['search']:
+    elif args["search"]:
         return SearchPlates
-    elif args['new']:
+    elif args["new"]:
         return RunPlate
