@@ -12,7 +12,7 @@ lint:
 
 .PHONY: test
 test:
-	@tox -e py37
+	@tox -e py39
 
 .PHONY: coverage
 coverage:
