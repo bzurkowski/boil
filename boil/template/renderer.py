@@ -6,7 +6,7 @@ from boil.utils.file_utils import ensure_dir
 
 class TemplateRenderer:
 
-    PATH_EXCLUDE_PATTERNS = [r"^_includes\/?$"]
+    PATH_EXCLUDE_PATTERNS = [r"^_includes\/.+"]
 
     def __init__(self, env, vars, target_dir):
         self._env = env
