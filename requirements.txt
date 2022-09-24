@@ -1,4 +1,4 @@
-jinja2
-docopt>=0.6.2
-inflection
-six
+Jinja2==3.1.2                       # BSD-3-Clause license
+docopt==0.6.2                       # MIT
+inflection==0.5.1                   # MIT
+six==1.16.0                         # MIT
