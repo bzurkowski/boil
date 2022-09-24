@@ -1,9 +1,6 @@
 Boil
 ==============================================
 
-.. image:: https://img.shields.io/travis/bzurkowski/boil.svg
-    :target: https://travis-ci.org/bzurkowski/boil
-
 .. image:: https://api.codeclimate.com/v1/badges/b56e0c5a0856da0c35ba/maintainability
     :target: https://codeclimate.com/github/bzurkowski/boil/maintainability
 
