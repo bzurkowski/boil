@@ -13,7 +13,7 @@ with open(os.path.join(base_dir, "boil", "__version__.py")) as f:
 
 
 def get_description():
-    with open("README.rst") as readme:
+    with open("README.md") as readme:
         return readme.read()
 
 
