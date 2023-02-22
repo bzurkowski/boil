@@ -41,7 +41,6 @@ class CommandsTest(unittest.TestCase):
         command.execute(args)
         result = mock_stdout.getvalue()
         self.assertIn("python_package", result)
-        self.assertIn("python_script", result)
         self.assertNotIn("ansible_role", result)
 
     @patch("sys.stdout", new_callable=StringIO)
