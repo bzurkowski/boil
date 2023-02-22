@@ -59,6 +59,7 @@ setup(
     name="boil",
     version=pkg_metadata["__version__"],
     description="Radically simple app initialization",
+    long_description_content_type="text/markdown",
     long_description=get_description(),
     url="https://github.com/bzurkowski/boil",
     author="Bartosz Zurkowski",
