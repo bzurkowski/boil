@@ -2,10 +2,8 @@ import pkg_resources
 
 from boil.exceptions import PlateNotFound
 from boil.plate import Plate
-from boil.utils.misc import singleton
 
 
-@singleton
 class PlateManager:
 
     ENTRY_NAMESPACE = "boil.plates"
